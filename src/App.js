@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Cart from './Components/Cart';
+import Home from './Components/Home';
+import Login from './Components/Login';
+import ProductList from './Components/ProductList';
+import Register from './Components/Register';
+import ViewProduct from './Components/ViewProduct';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate 
+} from "react-router-dom";
+import Payment from './Components/Pay';
+import Success from './Components/Success';
 function App() {
+  const user = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/products/:category" element={<ProductList />}></Route>
+        <Route path="/product/:id" element={<ViewProduct />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/login" element={<Login />}>
+        </Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/pay" element={<Payment />}></Route>
+        <Route path="/success" element={<Success />}></Route>
+    </Routes>
+  </BrowserRouter>
   );
 }
 
